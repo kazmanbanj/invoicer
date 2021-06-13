@@ -10,4 +10,9 @@ class invoicesController extends Controller
     {
         return view('invoices.create');
     }
+
+    public function store(Request $request)
+    {
+        return 'hi';
+    }
 }
