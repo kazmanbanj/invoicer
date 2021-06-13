@@ -48,4 +48,10 @@ class invoicesController extends Controller
 
         return 'hi';
     }
+
+    public function show($invoice_id)
+    {
+        $invoice = Invoice::findOrFail($invoice_id);
+        return view('invoices.show', compact('invoice'));
+    }
 }
