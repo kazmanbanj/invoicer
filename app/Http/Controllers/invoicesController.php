@@ -54,4 +54,11 @@ class invoicesController extends Controller
         $invoice = Invoice::findOrFail($invoice_id);
         return view('invoices.show', compact('invoice'));
     }
+
+    public function download($invoice_id)
+    {
+        $invoice = Invoice::findOrFail($invoice_id);
+        $pdf = \PDF::loadView('invoices.pdf', compact('invoice'));
+        return $pdf->stream('invoice.pdf');
+    }
 }

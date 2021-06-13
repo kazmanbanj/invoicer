@@ -31,7 +31,11 @@
                                 <td>{{ $invoice->invoice_number }}</td>
                                 <td>{{ $invoice->customer->name }}</td>
                                 <td>{{ number_format($invoice->total_amount, 2) }}</td>
-                                <td><a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-primary btn-sm">View Invoice</a></td>
+                                <td>
+                                <div class="d-flex">
+                                    <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-primary btn-sm">View Invoice</a>
+                                    <a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning ml-3 btn-sm">Download PDF</a></div>
+                                </td>
                             </tr>
                         <!-- @endforeach -->
                     </table>
