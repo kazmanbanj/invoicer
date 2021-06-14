@@ -25,7 +25,7 @@
                             <th>Total Amount</th>
                             <th></th>
                         </tr>
-                        <!-- @foreach ($invoices as $invoice) -->
+                        @foreach ($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->invoice_date }}</td>
                                 <td>{{ $invoice->invoice_number }}</td>
@@ -34,10 +34,11 @@
                                 <td>
                                 <div class="d-flex">
                                     <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-primary btn-sm">View Invoice</a>
-                                    <a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning ml-3 btn-sm">Download PDF</a></div>
+                                    <a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning ml-3 btn-sm">Download PDF</a>
+                                </div>
                                 </td>
                             </tr>
-                        <!-- @endforeach -->
+                        @endforeach
                     </table>
                 </div>
             </div>

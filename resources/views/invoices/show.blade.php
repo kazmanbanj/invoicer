@@ -133,6 +133,7 @@
                         </div>
                     </div>
                 </div>
+        <div class="text-center py-2"><a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning">Download PDF</a></div>
             </div>
         </div>
     </div>

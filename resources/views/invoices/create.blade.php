@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Create Invoice</div>
 
-                <form action="{{ route('invoices.store') }}" method="post">
+                <form action="{{ route('invoices.store') }}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="container">
@@ -23,36 +23,13 @@
                                 <div class="row clearfix" style="margin-top:20px">
                                     <div class="col-md-12">
                                         <div class="float-left col-md-6">
-                                            <b>Customer details</b>:
-                                            <br><br>
-                                            Name*: <input type="text" name="customer[name]" class="form-control" required>
-                                            Address*: <input type="text" name="customer[address]" class="form-control" required>
-                                            Postcode/ZIP: <input type="text" name="customer[postcode]" class="form-control" required>
-                                            City*: <input type="text" name="customer[city]" class="form-control" required>
-                                            State: <input type="text" name="customer[state]" class="form-control" required>
-                                            Country*: <input type="text" name="customer[country]" class="form-control" required>
-                                            Phone: <input type="text" name="customer[phone]" class="form-control" required>
-                                            Email: <input type="text" name="customer[email]" class="form-control" required>
+                                            Choose customer:
                                             <br>
-                                            <b>Additional fields</b> (optional):
-                                            <br>
-                                            <table class="table table-bordered table-hover">
-                                                <tbody>
-                                                    <tr>
-                                                        <th class="text-center" width="50%">Field</th>
-                                                        <th class="text-center">Value</th>
-                                                    </tr>
-                                                    @for ($i = 0; $i <= 2; $i++) <tr>
-                                                        <td class="text-center">
-                                                            <input type="text" name="customer_fields[{{ $i }}][field_key]" id="" class="form-control">
-                                                        </td>
-                                                        <td class="text-center">
-                                                            <input type="text" name="customer_fields[{{ $i }}][field_value]" id="" class="form-control">
-                                                        </td>
-                                                        </tr>
-                                                    @endfor
-                                                </tbody>
-                                            </table>
+                                            <select name="invoice[customer_id]">
+                                                @foreach ($customers as $customer)
+                                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                         <div class="float-right col-md-4">
                                             <b>Seller details:</b>
@@ -112,7 +89,7 @@
                                                     <th class="text-center">Tax</th>
                                                     <td class="text-center">
                                                         <div class="input-group mb-2 mb-sm-0">
-                                                            <input type="number" class="form-control" id="tax" placeholder="0" name="invoice[tax_percent]">
+                                                            <input type="number" class="form-control" id="tax" placeholder="0" name="invoice[tax_percent]" required>
                                                             <div class="input-group-addon">%</div>
                                                         </div>
                                                     </td>
