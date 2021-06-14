@@ -21,7 +21,7 @@
                     <table class="table">
                         <tr>
                             <th>Name</th>
-                            <th>Price</th>
+                            <th>Price ({{ config('invoices.currency') }})</th>
                         </tr>
                         @forelse ($products as $product)
                             <tr>

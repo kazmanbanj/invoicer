@@ -8,14 +8,16 @@ use App\Models\Customer;
 use App\Models\InvoicesItem;
 use Illuminate\Http\Request;
 use App\Models\CustomersField;
+use Mpociot\VatCalculator\Facades\VatCalculator;
 
 class invoicesController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        $customers = Customer::all();
+        $customer = Customer::find($request->customer_id);
+        $tax = VatCalculator::getTaxRateForLocation($customer->country->shortcode) * 100;
         $products = Product::all();
-        return view('invoices.create', compact('customers', 'products'));
+        return view('invoices.create', compact('tax', 'products', 'customer'));
     }
 
     public function store(Request $request)

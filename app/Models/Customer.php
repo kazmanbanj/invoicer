@@ -10,7 +10,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'postcode', 'city', 'state', 'country', 'postcode', 'phone', 'email'];
+    protected $fillable = ['name', 'address', 'postcode', 'city', 'state', 'country_id', 'postcode', 'phone', 'email'];
 
     /**
      * Get all of the customer_fields for the Customer
@@ -18,5 +18,15 @@ class Customer extends Model
     public function customer_fields()
     {
         return $this->hasMany(CustomersField::class);
+    }
+
+    /**
+     * Get the country that owns the Customer
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
     }
 }

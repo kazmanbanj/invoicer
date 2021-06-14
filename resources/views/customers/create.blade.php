@@ -15,7 +15,12 @@
                             Postcode/ZIP: <input type="text" name='postcode' class="form-control" />
                             City*: <input type="text" name='city' class="form-control" required />
                             State: <input type="text" name='state' class="form-control" />
-                            Country: <input type="text" name='country' class="form-control" />
+                            Country*:
+                            <select class="form-control" required name="country_id">
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->id }}">{{ $country->title }} ({{ $country->shortcode }})</option>
+                                @endforeach
+                            </select>
                             Phone: <input type="text" name='phone' class="form-control" />
                             Email: <input type="email" name='email' class="form-control" />
                             <br />

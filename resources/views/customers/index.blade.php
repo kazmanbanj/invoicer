@@ -37,7 +37,7 @@
                                 <td>{{ $customer->postcode }}</td>
                                 <td>{{ $customer->city }}</td>
                                 <td>{{ $customer->state }}</td>
-                                <td>{{ $customer->country }}</td>
+                                <td>{{ $customer->country->title ?? '' }}</td>
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->email }}</td>
                                 <td><a href="{{ route('invoices.create') }}?customer_id={{ $customer->id }}" class="btn btn-xs btn-primary">New Invoice</a></td>
