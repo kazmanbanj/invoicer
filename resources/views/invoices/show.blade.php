@@ -10,13 +10,6 @@
                 <div class="card-body">
                 <div class="container">
                     <div class="row clearfix">
-                        @if (config('invoices.logo_file') != '')
-                            <div class="col-md-4 offset-4 text-center">
-                                <img src="{{ config('invoices.logo_file') }}" >
-                                <br>
-                            </div>
-                        @endif
-
                         <div class="col-md-4 offset-4 text-center">
                             <b>Invoice {{ $invoice->invoice_number }}</b>
                             <br>
@@ -41,7 +34,7 @@
                                         <br><b>State</b>: {{ $invoice->customer->state }}
                                     @endif
 
-                                    <br><b>Country</b>: {{ $invoice->customer->country }}
+                                    <br><b>Country</b>: {{ $invoice->customer->country->title }}
 
                                     @if ($invoice->customer->phone != '')
                                         <br><b>Phone</b>: {{ $invoice->customer->phone }}
@@ -58,19 +51,12 @@
                                     @endif
                                 </div>
                                 <div class="float-right col-md-4">
-                                    <b>From</b>: {{ config('invoices.seller.name') }}
+                                    <b>From</b>: {{ Auth::user()->name }}
 
-                                    <br><br><b>Address</b>: {{ config('invoices.seller.address') }}
+                                    <br><br><b>Address</b>: {{ Auth::user()->address }}
 
-                                    @if (config('invoices.seller.email'))
-                                        <br><b>Email</b>: {{ config('invoices.seller.email') }}
-                                    @endif
-
-                                    @if (is_array(config('invoices.seller.additional_info')))
-                                        @foreach (config('invoices.seller.additional_info') as $key => $value)
-                                            <br><br><b>{{ $key }}</b>: {{ $value }}
-                                        @endforeach
-                                    @endif
+                                    <br><b>Email</b>: {{ Auth::user()->email }}
+                                    <br><b>Email</b>: {{ Auth::user()->phone }}
                                 </div>
                             </div>
                         </div>
@@ -107,7 +93,7 @@
                                 <table class="table table-bordered table-hover" id="tab_logic_total">
                                     <tbody>
                                         <tr>
-                                            <th class="text-center" width="50%">Sub Total ({{ config('invoices.currency') }})</th>
+                                            <th class="text-center" width="50%">Sub Total ({{ Config::get('invoices.currency') }})</th>
                                             <td class="text-center">{{ number_format($invoice->total_amount, 2) }}</td>
                                         </tr>
                                         <tr>

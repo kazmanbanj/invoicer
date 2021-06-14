@@ -6,12 +6,12 @@ return [
     'seller' => [
         'name' => env('Your company name'),
         'address' => env('Lagos Street, Lagos'),
-        'emal' => env('email@email.com'),
+        'email' => env('email@email.com'),
         'additional_info' => [
             'VAT Number' => env('XXXX XXXX XXXX')
         ]
     ],
-    'currency' => env('&#8358;')
+    'currency' => env('CURRENCY', '&#8358;'),
 ];
 
 ?>

@@ -19,7 +19,7 @@
                             <th>Invoice Date</th>
                             <th>Invoice Number</th>
                             <th>Customer</th>
-                            <th>Total Amount ({{ config('invoices.currency') }})</th>
+                            <th>Total Amount(&#8358;)</th>
                             <th></th>
                         </tr>
                         @foreach ($invoices as $invoice)
