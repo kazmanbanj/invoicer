@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Product;
 use App\Models\Customer;
 use App\Models\InvoicesItem;
-use App\Models\CustomersField;
 use Illuminate\Http\Request;
+use App\Models\CustomersField;
 
 class invoicesController extends Controller
 {
     public function create()
     {
         $customers = Customer::all();
-        return view('invoices.create', compact('customers'));
+        $products = Product::all();
+        return view('invoices.create', compact('customers', 'products'));
     }
 
     public function store(Request $request)

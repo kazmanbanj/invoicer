@@ -59,7 +59,13 @@
                                             <tbody>
                                                 <tr id='addr0'>
                                                     <td>1</td>
-                                                    <td><input type="text" name='product[]' placeholder='Enter Product Name' class="form-control" /></td>
+                                                    <td>
+                                                        <select name="product[]" class="form-control">
+                                                            @foreach ($products as $product)
+                                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </td>
                                                     <td><input type="number" name='qty[]' placeholder='Enter Qty' class="form-control qty" step="0" min="0" /></td>
                                                     <td><input type="number" name='price[]' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0" /></td>
                                                     <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly /></td>

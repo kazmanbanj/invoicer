@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +25,5 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('invoices', App\Http\Controllers\InvoicesController::class);
     Route::get('invoices/{invoice_id}/download', [App\Http\Controllers\InvoicesController::class, 'download'])->name('invoices.download');
     Route::resource('customers', App\Http\Controllers\CustomersController::class);
+    Route::resource('products', App\Http\Controllers\ProductController::class);
 });
