@@ -20,6 +20,7 @@
                                     <br>
                                     <input type="date" name="invoice[invoice_date]" id="" class="form-control" value="{{ date('Y-m-d') }}" required>
                                 </div>
+                            </div>
                                 <div class="row clearfix" style="margin-top:20px">
                                     <div class="col-md-12">
                                         <div class="float-left col-md-6">
@@ -27,15 +28,12 @@
                                             <input type="hidden" name="invoice[customer_id]" value="{{ $customer->id }}">
                                         </div>
                                         <div class="float-right col-md-4">
-                                            <b>Seller details:</b>
-                                            <br><br>
-                                            Your company name
-                                            <br>
-                                            I Adeshina road, lagos state
-                                            <br>
-                                            Email: company@kkkff.co
-                                            <br>
-                                            VAT number: xx xxxxxxxx
+                                            <b>From</b>: {{ Auth::user()->name }}
+
+                                            <br><br><b>Address</b>: {{ Auth::user()->address }}
+
+                                            <br><b>Email</b>: {{ Auth::user()->email }}
+                                            <br><b>Email</b>: {{ Auth::user()->phone }}
                                         </div>
                                     </div>
                                 </div>

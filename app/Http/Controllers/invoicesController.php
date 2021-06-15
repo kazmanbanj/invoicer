@@ -48,6 +48,7 @@ class invoicesController extends Controller
     {
         $invoice = Invoice::findOrFail($invoice_id);
         $pdf = \PDF::loadView('invoices.pdf', compact('invoice'));
+        set_time_limit(300);
         return $pdf->stream('invoice.pdf');
     }
 }
