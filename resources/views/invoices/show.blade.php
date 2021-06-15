@@ -88,12 +88,12 @@
                         </div>
                     </div>
                     <div class="row clearfix" style="margin-top:20px">
-                        <div class="col-md-12">
-                            <div class="float-right col-md-7">
-                                <table class="table table-bordered table-hover" id="tab_logic_total">
-                                    <tbody>
+                            <div class="col-md-12">
+                                <div class="float-right col-md-5">
+                                    <table class="table table-bordered table-hover" id="tab_logic_total">
+                                        <tbody>
                                         <tr>
-                                            <th class="text-center" width="50%">Sub Total(&#8358;)</th>
+                                            <th class="text-center" width="60%">Sub Total(&#8358;)</th>
                                             <td class="text-center">{{ number_format($invoice->total_amount, 2) }}</td>
                                         </tr>
                                         <tr>
