@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\CustomersField;
 use Mpociot\VatCalculator\Facades\VatCalculator;
 
-class InvoicesController extends Controller
+class InvoiceController extends Controller
 {
     public function create(Request $request)
     {
@@ -48,7 +48,7 @@ class InvoicesController extends Controller
     {
         $invoice = Invoice::findOrFail($invoice_id);
         $pdf = \PDF::loadView('invoices.pdf', compact('invoice'));
-        set_time_limit(300);
+        set_time_limit(250);
         return $pdf->stream('invoice.pdf');
     }
 }
