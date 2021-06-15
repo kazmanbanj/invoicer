@@ -79,7 +79,7 @@
 
 
 <div class="clearfix mt-3">
-    <table class="table table-bordered table-hover" id="tab_logic_total">
+    <table class="float-right table tbl-total">
         <tbody>
             <tr>
                 <th class="text-center" width="50%">Sub Total(&#8358;)</th>
