@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\CustomersField;
 use Mpociot\VatCalculator\Facades\VatCalculator;
 
-class invoicesController extends Controller
+class InvoicesController extends Controller
 {
     public function create(Request $request)
     {
