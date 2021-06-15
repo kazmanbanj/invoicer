@@ -47,8 +47,8 @@
                                                     <th class="text-center"> # </th>
                                                     <th class="text-center"> Product </th>
                                                     <th class="text-center"> Qty </th>
-                                                    <th class="text-center"> Price ({{ config('invoices.currency') }})</th>
-                                                    <th class="text-center"> Total ({{ config('invoices.currency') }})</th>
+                                                    <th class="text-center"> Price(&#8358;)</th>
+                                                    <th class="text-center"> Total(&#8358;)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -83,7 +83,7 @@
                                         <table class="table table-bordered table-hover" id="tab_logic_total">
                                             <tbody>
                                                 <tr>
-                                                    <th class="text-center" width="50%">Sub Total ({{ config('invoices.currency') }})</th>
+                                                    <th class="text-center" width="50%">Sub Total(&#8358;)</th>
                                                     <td class="text-center"><input type="number" name='sub_total' placeholder='0.00' class="form-control" id="sub_total" readonly /></td>
                                                 </tr>
                                                 <tr>
@@ -96,11 +96,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="text-center">Tax Amount ({{ config('invoices.currency') }})</th>
+                                                    <th class="text-center">Tax Amount(&#8358;)</th>
                                                     <td class="text-center"><input type="number" name='tax_amount' id="tax_amount" placeholder='0.00' class="form-control" readonly /></td>
                                                 </tr>
                                                 <tr>
-                                                    <th class="text-center">Grand Total ({{ config('invoices.currency') }})</th>
+                                                    <th class="text-center">Grand Total(&#8358;)</th>
                                                     <td class="text-center"><input type="number" name='total_amount' id="total_amount" placeholder='0.00' class="form-control" readonly /></td>
                                                 </tr>
                                             </tbody>

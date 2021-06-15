@@ -2,12 +2,6 @@
 
 @section('content')
     <div class="clearfix">
-        @if (config('invoices.logo_file') != '')
-            <div class="text-center">
-                <img src="{{ asset(config('invoices.logo_file')) }}" />
-            </div>
-        @endif
-
         <div class="text-center">
             <b>Invoice {{ $invoice->invoice_number }}</b>
             <br>
@@ -49,19 +43,12 @@
         </div>
 
         <div class="float-right">
-            <b>From</b>: {{ config('invoices.seller.name') }}
-            <br /><br />
-            <b>Address</b>: {{ config('invoices.seller.address') }}
-            @if (config('invoices.seller.email') != '')
-                <br /><br />
-                <b>Email</b>: {{ config('invoices.seller.email') }}
-            @endif
-            @if (is_array(config('invoices.seller.additional_info')))
-                @foreach (config('invoices.seller.additional_info') as $key => $value)
-                    <br /><br />
-                    <b>{{ $key }}</b>: {{ $value }}
-                @endforeach
-            @endif
+            <b>From</b>: {{ Auth::user()->name }}
+
+            <br><br><b>Address</b>: {{ Auth::user()->address }}
+
+            <br><b>Email</b>: {{ Auth::user()->email }}
+            <br><b>Email</b>: {{ Auth::user()->phone }}
         </div>
     </div>
 
@@ -72,8 +59,8 @@
                 <th class="text-center"> # </th>
                 <th> Product </th>
                 <th class="text-center"> Qty </th>
-                <th class="text-center"> Price ({{ config('invoices.currency') }}) </th>
-                <th class="text-center"> Total ({{ config('invoices.currency') }}) </th>
+                <th class="text-center"> Price (&#8358;) </th>
+                <th class="text-center"> Total (&#8358;) </th>
             </tr>
             </thead>
             <tbody>
@@ -96,7 +83,7 @@
             <tbody>
             @if ($invoice->tax_percent > 0)
                 <tr>
-                    <th class="text-right">Sub Total ({{ config('invoices.currency') }}):</th>
+                    <th class="text-right">Sub Total (&#8358;):</th>
                     <td class="text-left">
                         {{ number_format($invoice->total, 2) }}
                     </td>
@@ -107,14 +94,14 @@
                         {{ $invoice->tax_percent }}%
                 </tr>
                 <tr>
-                    <th class="text-right">Tax Amount ({{ config('invoices.currency') }}):</th>
+                    <th class="text-right">Tax Amount (&#8358;):</th>
                     <td class="text-left">
                         {{ number_format($invoice->total * $invoice->tax_percent / 100, 2) }}
                     </td>
                 </tr>
             @endif
             <tr>
-                <th class="text-right">Grand Total ({{ config('invoices.currency') }}):</th>
+                <th class="text-right">Grand Total (&#8358;):</th>
                 <td class="text-left">
                     @if ($invoice->tax_percent > 0)
                         {{ number_format($invoice->total * (1 + $invoice->tax_percent / 100), 2) }}
@@ -128,6 +115,6 @@
     </div>
 
     <div class="clearfix mt-3">
-        {{ config('invoices.footer_text') }}
+        <h2>Invoice must be paid within 30 days</h2>
     </div>
 @endsection

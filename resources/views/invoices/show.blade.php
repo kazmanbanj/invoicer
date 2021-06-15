@@ -68,8 +68,8 @@
                                             <th class="text-center"> # </th>
                                             <th class="text-center"> Product </th>
                                             <th class="text-center"> Qty </th>
-                                            <th class="text-center"> Price ({{ config('invoices.currency') }})</th>
-                                            <th class="text-center"> Total ({{ config('invoices.currency') }})</th>
+                                            <th class="text-center"> Price(&#8358;)</th>
+                                            <th class="text-center"> Total(&#8358;)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -93,7 +93,7 @@
                                 <table class="table table-bordered table-hover" id="tab_logic_total">
                                     <tbody>
                                         <tr>
-                                            <th class="text-center" width="50%">Sub Total ({{ Config::get('invoices.currency') }})</th>
+                                            <th class="text-center" width="50%">Sub Total(&#8358;)</th>
                                             <td class="text-center">{{ number_format($invoice->total_amount, 2) }}</td>
                                         </tr>
                                         <tr>
@@ -101,11 +101,11 @@
                                             <td class="text-center">{{ $invoice->tax_percent }}%</td>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">Tax Amount ({{ config('invoices.currency') }})</th>
+                                            <th class="text-center">Tax Amount(&#8358;)</th>
                                             <td class="text-center">{{ number_format($invoice->total_amount * $invoice->tax_percent / 100, 2) }}</td>
                                         </tr>
                                         <tr>
-                                            <th class="text-center">Grand Total ({{ config('invoices.currency') }})</th>
+                                            <th class="text-center">Grand Total(&#8358;)</th>
                                             <td class="text-center">{{ number_format($invoice->total_amount + ($invoice->total_amount * $invoice->tax_percent / 100), 2) }}</td>
                                         </tr>
                                     </tbody>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="row clearfix text-center" style="margin-top: 20px">
                         <div class="col-md-12">
-                            {{ config('invoices.footer_text') }}
+                            <h2>Invoice must be paid within 30 days</h2>
                         </div>
                     </div>
                 </div>
