@@ -79,24 +79,24 @@
 
 
 <div class="clearfix mt-3">
-    <table class="float-right table tbl-total">
+    <table class="table table-bordered table-hover" id="tab_logic_total">
         <tbody>
-        <tr>
-                                            <th class="text-center" width="50%">Sub Total(&#8358;)</th>
-                                            <td class="text-center">{{ number_format($invoice->total_amount, 2) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center">Tax</th>
-                                            <td class="text-center">{{ $invoice->tax_percent }}%</td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center">Tax Amount(&#8358;)</th>
-                                            <td class="text-center">{{ number_format($invoice->total_amount * $invoice->tax_percent / 100, 2) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-center">Grand Total(&#8358;)</th>
-                                            <td class="text-center">{{ number_format($invoice->total_amount + ($invoice->total_amount * $invoice->tax_percent / 100), 2) }}</td>
-                                        </tr>
+            <tr>
+                <th class="text-center" width="50%">Sub Total(&#8358;)</th>
+                <td class="text-center">{{ number_format($invoice->total_amount, 2) }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Tax</th>
+                <td class="text-center">{{ $invoice->tax_percent }}%</td>
+            </tr>
+            <tr>
+                <th class="text-center">Tax Amount(&#8358;)</th>
+                <td class="text-center">{{ number_format($invoice->total_amount * $invoice->tax_percent / 100, 2) }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Grand Total(&#8358;)</th>
+                <td class="text-center">{{ number_format($invoice->total_amount + ($invoice->total_amount * $invoice->tax_percent / 100), 2) }}</td>
+            </tr>
         </tbody>
     </table>
 </div>
