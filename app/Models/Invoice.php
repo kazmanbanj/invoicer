@@ -22,16 +22,6 @@ class Invoice extends Model
         return $this->belongsTo(Customer::class, 'customer_id');
     }
 
-    // /**
-    //  * Get the user that owns the Invoice
-    //  *
-    //  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-    //  */
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id');
-    // }
-
     /**
      * Get all of the invoice_items for the Invoice
      *
