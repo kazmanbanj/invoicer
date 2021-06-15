@@ -114,8 +114,8 @@
                         </div>
                     </div>
                     <div class="row clearfix text-center" style="margin-top: 20px">
-                        <div class="col-md-12">
-                            <h2>Invoice must be paid within 30 days</h2>
+                        <div class="col-md-12 text-center">
+                            <h4>Invoice must be paid within 30 days</h4>
                         </div>
                     </div>
                 </div>
