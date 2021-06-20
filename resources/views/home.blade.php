@@ -8,6 +8,11 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
+                    <form action="{{ route('invoices.index') }}" method="GET">
+                        <input type="search" name="query" placeholder="Enter a keyword here..." onfocus="this.value=''" value="{{ request('query') }}" />
+                        <input type="submit" class="btn btn-sm btn-info" value="Search" />
+                    </form>
+                    <br>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}

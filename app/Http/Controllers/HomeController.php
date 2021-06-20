@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $invoices = Invoice::with('customer')->where('id', auth()->id())->get();
         $invoices = Invoice::with('customer')->get();
         return view('home', compact('invoices'));
     }

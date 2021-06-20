@@ -10,7 +10,7 @@ class Customer extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'postcode', 'city', 'state', 'country_id', 'postcode', 'phone', 'email'];
+    protected $fillable = ['name', 'address', 'postcode', 'city', 'state', 'country_id', 'phone', 'email'];
 
     /**
      * Get all of the customer_fields for the Customer

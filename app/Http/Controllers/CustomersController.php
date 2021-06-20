@@ -17,7 +17,17 @@ class CustomersController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
+        $customers = Customer::with('country')
+            ->when(request('query'), function($query) {
+                return $query->where('name', 'like', '%'.request('query').'%')
+                    ->orWhere('address', 'like', '%'.request('query').'%')
+                    ->orWhere('postcode', 'like', '%'.request('query').'%')
+                    ->orWhere('city', 'like', '%'.request('query').'%')
+                    ->orWhere('state', 'like', '%'.request('query').'%')
+                    ->orWhere('country_id', 'like', '%'.request('query').'%')
+                    ->orWhere('phone', 'like', '%'.request('query').'%')
+                    ->orWhere('email', 'like', '%'.request('query').'%');
+            })->get();
 
         return view('customers.index', compact('customers'));
     }

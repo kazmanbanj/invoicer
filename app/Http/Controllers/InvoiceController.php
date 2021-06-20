@@ -12,6 +12,22 @@ use Mpociot\VatCalculator\Facades\VatCalculator;
 
 class InvoiceController extends Controller
 {
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $invoices = Invoice::with('customer')
+            ->when(request('query'), function($query) {
+                return $query
+                ->where('invoice_number', 'like', '%'.request('query').'%')
+                ->orWhere('invoice_date', 'like', '%'.request('query').'%');
+            })->get();
+        return view('home', compact('invoices'));
+    }
+
     public function create(Request $request)
     {
         $customer = Customer::find($request->customer_id);
