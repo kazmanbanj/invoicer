@@ -35,7 +35,7 @@
                             <th>Email</th>
                             <th></th>
                         </tr>
-                        @foreach ($customers as $customer)
+                        @forelse ($customers as $customer)
                             <tr>
                                 <td>{{ $customer->name }}</td>
                                 <td>{{ $customer->address }}</td>
@@ -46,8 +46,10 @@
                                 <td>{{ $customer->phone }}</td>
                                 <td>{{ $customer->email }}</td>
                                 <td><a href="{{ route('invoices.create') }}?customer_id={{ $customer->id }}" class="btn btn-xs btn-primary">New Invoice</a></td>
+                            @empty
+                                <td>No record found</td>
                             </tr>
-                        @endforeach
+                        @endforelse
                     </table>
                 </div>
             </div>

@@ -27,7 +27,7 @@
                             <th>Total Amount(&#8358;)</th>
                             <th></th>
                         </tr>
-                        @foreach ($invoices as $invoice)
+                        @forelse ($invoices as $invoice)
                             <tr>
                                 <td>{{ $invoice->invoice_date }}</td>
                                 <td>{{ $invoice->invoice_number }}</td>
@@ -39,8 +39,10 @@
                                     <a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning ml-3 btn-sm">Download PDF</a>
                                 </div>
                                 </td>
+                            @empty
+                                <td>No record found</td>
                             </tr>
-                        @endforeach
+                        @endforelse
                     </table>
                 </div>
             </div>
