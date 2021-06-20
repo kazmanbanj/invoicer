@@ -40,7 +40,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        Product::create($request->all());
+        Product::create($request->all() + ['user_id' => auth()->id()]);
         return redirect()->route('products.index');
     }
 

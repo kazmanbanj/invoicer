@@ -2,15 +2,24 @@
 
 namespace App\Models;
 
-// use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Invoice extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['invoice_number', 'invoice_date', 'customer_id', 'tax_percent'];
+    protected $fillable = ['invoice_number', 'invoice_date', 'customer_id', 'tax_percent', 'user_id'];
+
+    protected static function booted()
+    {
+        if (auth()->check()) {
+            static::addGlobalScope('user', function (Builder $builder) {
+                $builder->where('user_id', auth()->id());
+            });
+        }
+    }
 
     /**
      * Get the customer that owns the Invoice

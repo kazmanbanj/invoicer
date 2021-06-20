@@ -38,7 +38,7 @@ class InvoiceController extends Controller
 
     public function store(Request $request)
     {
-        $invoice = Invoice::create($request->invoice);
+        $invoice = Invoice::create($request->invoice + ['user_id' => auth()->id()]);
 
         for ($i=0; $i < count($request->product); $i++) {
             if (isset($request->qty[$i]) && isset($request->price[$i])) {

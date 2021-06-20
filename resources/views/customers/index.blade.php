@@ -47,7 +47,7 @@
                                 <td>{{ $customer->email }}</td>
                                 <td><a href="{{ route('invoices.create') }}?customer_id={{ $customer->id }}" class="btn btn-xs btn-primary">New Invoice</a></td>
                             @empty
-                                <td>No record found</td>
+                                <p>No record found</p>
                             </tr>
                         @endforelse
                     </table>

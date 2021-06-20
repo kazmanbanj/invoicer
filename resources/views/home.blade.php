@@ -40,7 +40,7 @@
                                 </div>
                                 </td>
                             @empty
-                                <td>No record found</td>
+                                <p>No record found</p>
                             </tr>
                         @endforelse
                     </table>

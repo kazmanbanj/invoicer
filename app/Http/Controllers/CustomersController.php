@@ -51,13 +51,14 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
-        $customer = Customer::create($request->all());
+        $customer = Customer::create($request->all() + ['user_id' => auth()->id()]);
         for ($i=0; $i < count($request->customer_fields); $i++) {
             if (isset($request->customer_fields[$i]['field_key']) && isset($request->customer_fields[$i]['field_value'])) {
                 CustomersField::create([
                     'customer_id' => $customer->id,
                     'field_key' => $request->customer_fields[$i]['field_key'],
-                    'field_value' => $request->customer_fields[$i]['field_value']
+                    'field_value' => $request->customer_fields[$i]['field_value'],
+                    'user_id' => auth()->id()
                 ]);
             }
         }
