@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                <a class="nav-link ml-3" href="{{ route('login') }}"><ion-icon name="arrow-back-outline" class="text-3"></ion-icon>Back</a>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 

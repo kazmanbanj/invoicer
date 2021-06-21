@@ -40,14 +40,19 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::create($request->invoice + ['user_id' => auth()->id()]);
 
-        for ($i=0; $i < count($request->product); $i++) {
-            if (isset($request->qty[$i]) && isset($request->price[$i])) {
-                InvoicesItem::create([
-                    'invoice_id' => $invoice->id,
-                    'name' => $request->product[$i],
-                    'quantity' => $request->qty[$i],
-                    'price' => $request->price[$i]
-                ]);
+
+        if ($request->product == '' || $request->product == null) {
+            return view('products.create');
+        } else {
+            for ($i=0; $i < count($request->product); $i++) {
+                if (isset($request->qty[$i]) && isset($request->price[$i])) {
+                    InvoicesItem::create([
+                        'invoice_id' => $invoice->id,
+                        'name' => $request->product[$i],
+                        'quantity' => $request->qty[$i],
+                        'price' => $request->price[$i]
+                    ]);
+                }
             }
         }
 

@@ -13,14 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes(['verify' => true]);
 
-
 Route::middleware(['middleware' => 'auth'])->group(function () {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('invoices', App\Http\Controllers\InvoiceController::class);
     Route::get('invoices/{invoice_id}/download', [App\Http\Controllers\InvoiceController::class, 'download'])->name('invoices.download');

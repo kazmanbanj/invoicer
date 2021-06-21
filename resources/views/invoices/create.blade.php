@@ -51,17 +51,19 @@
                                             </thead>
                                             <tbody>
                                                 <tr id='addr0'>
+                                                @forelse ($products as $product)
                                                     <td>1</td>
                                                     <td>
-                                                        <select name="product[]" class="form-control">
-                                                            @foreach ($products as $product)
+                                                        <select name="product[]" class="form-control product" required>
                                                                 <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                            @endforeach
                                                         </select>
                                                     </td>
-                                                    <td><input type="number" name='qty[]' placeholder='Enter Qty' class="form-control qty" step="0" min="0" /></td>
-                                                    <td><input type="number" name='price[]' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0" /></td>
+                                                    <td><input type="number" name='qty[]' placeholder='Enter Qty' class="form-control qty" step="0" min="0" required/></td>
+                                                    <td><input type="number" name='price[]' placeholder='Enter Unit Price' class="form-control price" step="0.00" min="0" required/></td>
                                                     <td><input type="number" name='total[]' placeholder='0.00' class="form-control total" readonly /></td>
+                                                @empty
+                                                    <td>No products added yet</td>
+                                                @endforelse
                                                 </tr>
                                                 <tr id='addr1'></tr>
                                             </tbody>
@@ -120,6 +122,7 @@
 <script>
 $(document).ready(function() {
     var i = 1;
+
     $("#add_row").click(function() {
         b = i - 1;
         $('#addr' + i).html($('#addr' + b).html()).find('td:first-child').html(i + 1);
@@ -140,8 +143,6 @@ $(document).ready(function() {
     $('#tax').on('keyup change', function() {
         calc_total();
     });
-
-
 });
 
 function calc() {
@@ -167,5 +168,6 @@ function calc_total() {
     $('#tax_amount').val(tax_sum.toFixed(2));
     $('#total_amount').val((tax_sum + total).toFixed(2));
 }
+
 </script>
 @stop
