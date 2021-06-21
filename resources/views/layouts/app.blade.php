@@ -60,10 +60,10 @@
                                 <a class="nav-link" href="{{ route('home') }}">Invoices</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
+                                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('products.index') }}">Products</a>
+                                <a class="nav-link" href="{{ route('customers.index') }}">Customers</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
