@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\CustomerTransaction;
 
 class HomeController extends Controller
 {
@@ -17,15 +19,26 @@ class HomeController extends Controller
         $this->middleware(['verified', 'auth']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        // $invoices = Invoice::with('customer')->where('id', auth()->id())->get();
-        $invoices = Invoice::with('customer')->get();
-        return view('home', compact('invoices'));
+        // $data = CustomerTransaction::selectRaw('sum(amount) as amount, MONTH(date_created) as month, YEAR(date_created) as year')
+        // ->join('customers', 'transactions.customer_id', '=', 'customers.id')
+        // ->groupBy('customer_id', 'month', 'year')
+        // ->get();
+
+        $data = Customer::with('transactions')->get();
+
+        // $data = Customer::with([
+        //     'transactions' => function ($query) {
+        //         $query->selectRaw('sum(amount) as amount, MONTH(date_created) as month, YEAR(date_created) as year');
+        //     }
+        // ])
+        // ->groupBy('customer_id', 'month', 'year')
+        // ->get();
+
+
+        // dd($data);
+
+        return view('home', compact('data'));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['middleware' => 'auth'])->group(function () {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'getAmountGroupedByCustomerAndYearMonth'])->name('home');
     Route::resource('invoices', App\Http\Controllers\InvoiceController::class);
     Route::get('invoices/{invoice_id}/download', [App\Http\Controllers\InvoiceController::class, 'download'])->name('invoices.download');
     Route::resource('customers', App\Http\Controllers\CustomersController::class);

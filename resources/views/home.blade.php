@@ -21,28 +21,21 @@
 
                     <table class="table">
                         <tr>
-                            <th>Invoice Date</th>
-                            <th>Invoice Number</th>
-                            <th>Customer</th>
-                            <th>Total Amount(&#8358;)</th>
-                            <th></th>
+                            {{-- <th>S/N</th> --}}
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Year month</th>
                         </tr>
-                        @forelse ($invoices as $invoice)
+                        @foreach ($data as $invoice)
+                            @foreach ($invoice->transactions as $key => $amount)
                             <tr>
-                                <td>{{ $invoice->invoice_date }}</td>
-                                <td>{{ $invoice->invoice_number }}</td>
-                                <td>{{ $invoice->customer->name }}</td>
-                                <td>{{ number_format($invoice->total_amount, 2) }}</td>
-                                <td>
-                                <div class="d-flex">
-                                    <a href="{{ route('invoices.show', $invoice->id) }}" class="btn btn-primary btn-sm">View Invoice</a>
-                                    <a href="{{ route('invoices.download', $invoice->id) }}" class="btn btn-warning ml-3 btn-sm">Download PDF</a>
-                                </div>
-                                </td>
-                            @empty
-                                <p>No record found</p>
+                                {{-- <td>{{ $key++ }}</td> --}}
+                                <td>{{ $invoice->name }}</td>
+                                <td>{{ $amount->amount }}</td>
+                                <td>{{ $amount->year }}-{{ sprintf('%02d', $amount->month) }}</td>
                             </tr>
-                        @endforelse
+                            @endforeach
+                        @endforeach
                     </table>
                 </div>
             </div>
