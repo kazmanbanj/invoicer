@@ -40,7 +40,6 @@ class InvoiceController extends Controller
     {
         $invoice = Invoice::create($request->invoice + ['user_id' => auth()->id()]);
 
-
         if ($request->product == '' || $request->product == null) {
             return view('products.create');
         } else {
