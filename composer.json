@@ -14,7 +14,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "mpociot/vat-calculator": "^2.5"
+        "mpociot/vat-calculator": "^2.5",
+        "scoutapp/scout-apm-laravel": "^2.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
